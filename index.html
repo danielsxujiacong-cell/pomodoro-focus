@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#d95d45" />
+    <meta name="description" content="一个轻巧的番茄钟：专注、休息、待办和护眼自然光提醒。" />
+    <title>番茄 · 专注空间</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='35' r='22' fill='%23d95d45'/%3E%3Cpath d='M32 13c3-7 11-9 17-6-4 6-10 9-17 6Z' fill='%237e9b76'/%3E%3Cpath d='M31 14C25 8 18 9 14 13c6 4 12 5 17 1Z' fill='%237e9b76'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#focus"><span class="brand-mark">●</span>番茄</a>
+        <nav aria-label="主导航">
+          <button class="nav-item active" data-view="focus"><span>◉</span> 专注</button>
+          <button class="nav-item" data-view="tasks"><span>✓</span> 待办</button>
+          <button class="nav-item" data-view="stats"><span>↗</span> 记录</button>
+        </nav>
+        <div class="quote">“把注意力留给<br />真正重要的事。”</div>
+        <button class="settings-btn" id="settingsButton">⚙ 设置</button>
+      </aside>
+      <section class="content">
+        <header><div><p class="eyebrow" id="dateLabel"></p><h1 id="viewTitle">专注片刻</h1></div><button class="icon-button" id="fullscreenButton" title="切换沉浸模式" aria-label="切换沉浸模式">⛶</button></header>
+        <section class="view active" id="focusView">
+          <div class="focus-layout">
+            <div class="timer-card">
+              <div class="mode-tabs" role="tablist" aria-label="计时模式"><button class="mode-tab active" data-mode="focus" role="tab" aria-selected="true">专注</button><button class="mode-tab" data-mode="short" role="tab" aria-selected="false">短休息</button><button class="mode-tab" data-mode="long" role="tab" aria-selected="false">长休息</button></div>
+              <div class="timer-wrap"><svg class="timer-ring" viewBox="0 0 260 260" aria-hidden="true"><circle class="ring-track" cx="130" cy="130" r="112" /><circle class="ring-progress" id="progressRing" cx="130" cy="130" r="112" /></svg><div class="timer-display" aria-live="off"><span id="timeDisplay">25:00</span><small id="modeLabel">准备开始</small></div></div>
+              <div class="timer-actions"><button class="secondary-btn" id="resetButton">重置</button><button class="start-btn" id="startButton"><span>▶</span> 开始专注</button></div>
+              <p class="cycle-note"><span id="cycleDots">● ○ ○ ○</span>　完成 4 次专注后，享受一次长休息</p>
+            </div>
+            <div class="now-card"><p class="section-kicker">正在进行</p><div class="current-task" id="currentTaskText">选择一项待办，开始专注</div><button class="link-button" id="selectTaskButton">选择任务 →</button><div class="mini-stats"><div><span id="todayFocus">0</span><small>今日番茄</small></div><div><span id="todayMinutes">0</span><small>专注分钟</small></div></div></div>
+          </div>
+          <div class="sun-card" id="sunCard"><div class="sun-icon" aria-hidden="true">☀</div><div><p class="section-kicker">护眼节奏</p><h2>每 <span id="sunEvery">2</span> 个番茄，去窗边看一会儿远处</h2><p>自然光与远眺都很好；请不要直视太阳。</p></div><button class="sun-toggle" id="sunToggle" aria-pressed="true">已开启</button></div>
+          <div class="ambient-row"><div><p class="section-kicker">环境音</p><p class="ambient-title">让思绪安静下来</p></div><div class="sound-options"><button class="sound" data-sound="雨声">☂ 雨声</button><button class="sound" data-sound="咖啡馆">♨ 咖啡馆</button><button class="sound" data-sound="白噪音">〰 白噪音</button></div></div>
+        </section>
+        <section class="view" id="tasksView"><div class="tasks-heading"><p>清空杂念，一次只做好一件事。</p><button class="add-task-btn" id="addTaskButton">+ 添加待办</button></div><form class="task-form hidden" id="taskForm"><input id="taskInput" maxlength="80" placeholder="写下要完成的事…" required /><button>添加</button></form><div class="task-list" id="taskList"></div></section>
+        <section class="view" id="statsView"><div class="stats-summary"><article><span id="summaryPomodoros">0</span><p>本周番茄</p></article><article><span id="summaryMinutes">0</span><p>累计分钟</p></article><article><span id="summaryDone">0</span><p>完成待办</p></article></div><div class="chart-card"><p class="section-kicker">本周专注时间</p><div class="bar-chart" id="barChart"></div><div class="chart-labels" id="chartLabels"></div></div></section>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="modal hidden" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><form class="modal-card" id="settingsForm"><button class="close" type="button" data-close="settingsModal" aria-label="关闭设置">×</button><p class="section-kicker">你的节奏</p><h2 id="settingsTitle">设置</h2><label>专注 <input id="focusInput" type="number" min="1" max="180" /> 分钟</label><label>短休息 <input id="shortInput" type="number" min="1" max="60" /> 分钟</label><label>长休息 <input id="longInput" type="number" min="1" max="90" /> 分钟</label><label>每隔 <input id="sunInput" type="number" min="1" max="12" /> 个番茄护眼</label><label class="check-row"><input id="notificationInput" type="checkbox" /> 完成时显示浏览器通知</label><button class="start-btn save-settings" type="submit">保存设置</button></form></div>
+    <div class="modal hidden" id="sunModal" role="dialog" aria-modal="true" aria-labelledby="sunTitle"><div class="modal-card sun-modal-card"><button class="close" type="button" data-close="sunModal" aria-label="关闭提醒">×</button><div class="sun-large" aria-hidden="true">☀</div><p class="section-kicker">护眼小休息</p><h2 id="sunTitle">去窗边，看看远处吧</h2><p>让眼睛离开屏幕 20 秒，望向远处和自然光。请避免直视太阳。</p><button class="start-btn save-settings" id="sunDoneButton">我已经看过远处了</button></div></div>
+    <script src="app.js"></script>
+  </body>
+</html>
