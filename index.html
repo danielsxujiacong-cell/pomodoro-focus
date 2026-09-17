@@ -25,13 +25,14 @@
         <button class="settings-btn" id="settingsButton">⚙ 设置</button>
       </aside>
       <section class="content">
-        <header><div><p class="eyebrow" id="dateLabel"></p><h1 id="viewTitle">专注片刻</h1></div><button class="icon-button" id="fullscreenButton" title="切换沉浸模式" aria-label="切换沉浸模式">⛶</button></header>
+        <header><div><p class="eyebrow" id="dateLabel"></p><h1 id="viewTitle">专注片刻</h1></div><button class="icon-button" id="fullscreenButton" title="进入沉浸模式" aria-label="进入沉浸模式">⛶</button></header>
         <section class="view active" id="focusView">
           <div class="focus-layout">
             <div class="timer-card">
               <div class="mode-tabs" role="tablist" aria-label="计时模式"><button class="mode-tab active" data-mode="focus" role="tab" aria-selected="true">专注</button><button class="mode-tab" data-mode="short" role="tab" aria-selected="false">短休息</button><button class="mode-tab" data-mode="long" role="tab" aria-selected="false">长休息</button></div>
               <div class="timer-wrap"><svg class="timer-ring" viewBox="0 0 260 260" aria-hidden="true"><circle class="ring-track" cx="130" cy="130" r="112" /><circle class="ring-progress" id="progressRing" cx="130" cy="130" r="112" /></svg><div class="timer-display" aria-live="off"><span id="timeDisplay">25:00</span><small id="modeLabel">准备开始</small></div></div>
               <div class="timer-actions"><button class="secondary-btn" id="resetButton">重置</button><button class="start-btn" id="startButton"><span>▶</span> 开始专注</button></div>
+              <button class="exit-focus" id="exitFocusButton" aria-label="退出沉浸模式">← 退出沉浸模式 <kbd>Esc</kbd></button>
               <p class="cycle-note"><span id="cycleDots">● ○ ○ ○</span>　完成 4 次专注后，享受一次长休息</p>
             </div>
             <div class="now-card"><p class="section-kicker">正在进行</p><div class="current-task" id="currentTaskText">选择一项待办，开始专注</div><button class="link-button" id="selectTaskButton">选择任务 →</button><div class="mini-stats"><div><span id="todayFocus">0</span><small>今日番茄</small></div><div><span id="todayMinutes">0</span><small>专注分钟</small></div></div></div>
