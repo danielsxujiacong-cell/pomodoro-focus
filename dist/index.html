@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
   </head>
   <body>
     <main class="app-shell">
@@ -25,7 +27,7 @@
         <button class="settings-btn" id="settingsButton">⚙ 设置</button>
       </aside>
       <section class="content">
-        <header><div><p class="eyebrow" id="dateLabel"></p><h1 id="viewTitle">专注片刻</h1></div><button class="icon-button" id="fullscreenButton" title="进入沉浸模式" aria-label="进入沉浸模式">⛶</button></header>
+        <header><div><p class="eyebrow" id="dateLabel"></p><h1 id="viewTitle">专注片刻</h1></div><div class="header-actions"><div class="account-status" id="accountStatus"><span id="accountMessage">登录后同步你的番茄园</span><button class="account-button" id="accountButton">登录 / 注册</button></div><button class="icon-button" id="fullscreenButton" title="进入沉浸模式" aria-label="进入沉浸模式">⛶</button></div></header>
         <section class="view active" id="focusView">
           <div class="focus-layout">
             <div class="timer-card">
@@ -49,6 +51,7 @@
     <div class="modal hidden" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><form class="modal-card" id="settingsForm"><button class="close" type="button" data-close="settingsModal" aria-label="关闭设置">×</button><p class="section-kicker">你的节奏</p><h2 id="settingsTitle">设置</h2><label>专注 <input id="focusInput" type="number" min="1" max="180" /> 分钟</label><label>短休息 <input id="shortInput" type="number" min="1" max="60" /> 分钟</label><label>长休息 <input id="longInput" type="number" min="1" max="90" /> 分钟</label><label>每隔 <input id="sunInput" type="number" min="1" max="12" /> 个番茄护眼</label><label class="check-row"><input id="notificationInput" type="checkbox" /> 完成时显示浏览器通知</label><button class="start-btn save-settings" type="submit">保存设置</button></form></div>
     <div class="modal hidden" id="sunModal" role="dialog" aria-modal="true" aria-labelledby="sunTitle"><div class="modal-card sun-modal-card"><button class="close" type="button" data-close="sunModal" aria-label="关闭提醒">×</button><div class="sun-large" aria-hidden="true">☀</div><p class="section-kicker">护眼小休息</p><h2 id="sunTitle">去窗边，看看远处吧</h2><p>让眼睛离开屏幕 20 秒，望向远处和自然光。请避免直视太阳。</p><button class="start-btn save-settings" id="sunDoneButton">我已经看过远处了</button></div></div>
     <div class="modal hidden" id="alarmModal" role="alertdialog" aria-modal="true" aria-labelledby="alarmTitle"><div class="modal-card alarm-modal-card"><div class="alarm-icon" aria-hidden="true">◌</div><p class="section-kicker">计时提醒</p><h2 id="alarmTitle">一个番茄完成</h2><p id="alarmMessage">该休息一下了。</p><button class="start-btn save-settings" id="stopAlarmButton">暂停提示音</button></div></div>
+    <div class="modal hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle"><form class="modal-card" id="authForm"><button class="close" type="button" data-close="authModal" aria-label="关闭登录">×</button><p class="section-kicker">账号</p><h2 id="authTitle">登录你的番茄园</h2><p class="auth-hint" id="authHint">只保存账号身份，不上传番茄数据。</p><label>邮箱 <input id="authEmail" type="email" autocomplete="email" required /></label><label>密码 <input id="authPassword" type="password" autocomplete="current-password" minlength="6" required /></label><button class="start-btn save-settings" type="submit" id="authSubmit">登录</button><button class="auth-switch" type="button" id="authSwitch">没有账号？注册</button><p class="auth-error" id="authError" role="alert"></p></form></div>
     <script src="app.js"></script>
   </body>
 </html>
