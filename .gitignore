@@ -1,4 +1,5 @@
 .sites-runtime/
+.sites-package/
 *.tar.gz
 .env
 .env.*
