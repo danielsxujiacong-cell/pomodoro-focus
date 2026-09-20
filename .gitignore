@@ -1,5 +1,6 @@
 .sites-runtime/
 .sites-package/
+outputs/
 *.tar.gz
 .env
 .env.*
