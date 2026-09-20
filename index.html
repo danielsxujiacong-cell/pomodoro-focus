@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#d95d45" />
     <meta name="description" content="一个轻巧的番茄钟：专注、休息、待办和护眼自然光提醒。" />
-    <title>番茄 · 专注空间</title>
+    <title>番茄钟 · 专注空间</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='35' r='22' fill='%23d95d45'/%3E%3Cpath d='M32 13c3-7 11-9 17-6-4 6-10 9-17 6Z' fill='%237e9b76'/%3E%3Cpath d='M31 14C25 8 18 9 14 13c6 4 12 5 17 1Z' fill='%237e9b76'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +17,7 @@
   <body>
     <main class="app-shell">
       <aside class="sidebar">
-        <a class="brand" href="#focus"><span class="brand-mark">●</span>番茄</a>
+        <a class="brand" href="#focus"><span class="brand-mark">●</span>番茄钟</a>
         <nav aria-label="主导航">
           <button class="nav-item active" data-view="focus"><span>◉</span> 专注</button>
           <button class="nav-item" data-view="tasks"><span>✓</span> 待办</button>
@@ -41,7 +41,7 @@
           </div>
           <div class="sun-card" id="sunCard"><div class="sun-icon" aria-hidden="true">☀</div><div><p class="section-kicker">护眼节奏</p><h2>每 <span id="sunEvery">1</span> 个番茄，去窗边看一会儿远处</h2><p>自然光与远眺都很好；请不要直视太阳。</p></div><button class="sun-toggle" id="sunToggle" aria-pressed="true">已开启</button></div>
           <section class="garden-card" aria-labelledby="gardenTitle"><div class="garden-heading"><div><p class="section-kicker">番茄种植园</p><h2 id="gardenTitle">专注会开花结果</h2></div><span class="garden-total" id="gardenTotal">0 个</span></div><div class="garden-plot" id="gardenPlot" aria-label="番茄园土地"></div><div class="garden-progress-row"><div><strong id="gardenStageLabel">番茄成长中</strong><span id="gardenStageCount">0 / 4 次专注</span></div><div class="growth-meter" id="growthMeter" aria-label="成长进度"></div></div><p class="garden-progress" id="gardenProgress">完成一次专注，获得一颗番茄种子。</p><button class="harvest-button hidden" id="harvestButton">收获番茄</button></section>
-          <div class="ambient-row"><div><p class="section-kicker">环境音</p><p class="ambient-title">让思绪安静下来</p><a class="sound-credit" href="https://mixkit.co/free-sound-effects/" target="_blank" rel="noreferrer">音源：Mixkit</a></div><div class="sound-options" aria-label="环境音选项"><button class="sound" data-sound="rain">☂ 细雨</button><button class="sound" data-sound="waves">〰 海浪</button><button class="sound" data-sound="cafe">♨ 咖啡馆</button><button class="sound" data-sound="birds">♩ 晨鸟</button><button class="sound" data-sound="white">∿ 白噪音</button></div></div>
+          <div class="ambient-row"><div><p class="section-kicker">环境音</p><p class="ambient-title">让思绪安静下来</p></div><div class="sound-options" aria-label="环境音选项"><button class="sound" data-sound="rain">☂ 细雨</button><button class="sound" data-sound="waves">〰 海浪</button><button class="sound" data-sound="cafe">♨ 咖啡馆</button><button class="sound" data-sound="birds">♩ 晨鸟</button><button class="sound" data-sound="white">∿ 白噪音</button></div></div>
         </section>
         <section class="view" id="tasksView"><div class="tasks-heading"><p>清空杂念，一次只做好一件事。</p><button class="add-task-btn" id="addTaskButton">+ 添加待办</button></div><form class="task-form hidden" id="taskForm"><input id="taskInput" maxlength="80" placeholder="写下要完成的事…" required /><button>添加</button></form><div class="task-list" id="taskList"></div></section>
         <section class="view" id="statsView"><div class="stats-summary"><article><span id="summaryPomodoros">0</span><p>本周番茄</p></article><article><span id="summaryMinutes">0</span><p>累计分钟</p></article><article><span id="summaryDone">0</span><p>完成待办</p></article></div><div class="chart-card"><p class="section-kicker">本周专注时间</p><div class="bar-chart" id="barChart"></div><div class="chart-labels" id="chartLabels"></div></div></section>
