@@ -1,15 +1,15 @@
 # Handoff
 
-- **更新：** 2026-09-17
-- **状态：** 已完成并迁移至 GitHub，已启用 GitHub Pages 自动发布。
-- **最近完成：** 推送 `main` 会自动把 `dist/` 更新到公开网站。
+- **更新：** 2026-09-28
+- **状态：** V3.2 Supabase 云同步 MVP 已实现；migration 已应用，真实 Auth/云端恢复与隔离浏览器验收通过。当前变更尚未提交或部署。
+- **最近完成：** `user_state` 表及 RLS 已在 Supabase 创建；测试账号完成首次本地数据上传、专注完成/植物成长、刷新和重新登录恢复、空 localStorage 新 origin 恢复、1/5/15 分钟设置恢复，以及手动清零周期但保留长期统计。断网恢复使用 localStorage 与 15 秒重试路径已通过代码检查，未模拟浏览器级物理断网。
 
 ## Next action
 
-如需迭代，先在浏览器进行交互验证，再将根目录源文件和 `dist/` 同步更新，提交并推送到 `main`。
-## V3.1 账号体系
+核对最终 diff，提交并推送到 `main`，确认 GitHub Pages Actions 发布成功，再保存并发布对应 Sites 版本；最后对线上页面做基本同步检查。
+## V3.1 账号体系（历史实现）
 
-- 已完成：Supabase Auth 邮箱注册、密码登录、刷新保持会话、退出登录和状态展示。
+- 已完成：Supabase Auth 邮箱注册、密码登录、刷新保持会话、退出登录和状态展示；V3.2 同步现已实现并通过云端恢复验收。
 - 配置：复制 `config.example.js` 为被忽略的 `config.js`，填写 Supabase 项目 URL 与 anon key。
-- 当前未实现数据同步；番茄数据继续使用既有 `tomato-state` localStorage 结构。
-- 下一步：V3.2 设计用户数据表、RLS 策略和 localStorage 到云端的迁移/冲突策略。
+- `tomato-state` 继续保存本地完整页面状态；仅核心统计、周期、植物和专注/休息时长写入 `user_state`。
+- 未同步倒计时、任务、提醒/声音/弹窗；离线变更按账号暂存并按 `updated_at` 协调。
