@@ -19,3 +19,8 @@
 - 配置：复制 `config.example.js` 为被忽略的 `config.js`，填写 Supabase 项目 URL 与 anon key。
 - `tomato-state` 继续保存本地完整页面状态；仅核心统计、周期、植物和专注/休息时长写入 `user_state`。
 - 未同步倒计时、任务、提醒/声音/弹窗；离线变更按账号暂存并按 `updated_at` 协调。
+
+## 2026-10-24 · SEO
+
+仅更新公开首页 SEO、canonical、robots.txt 和 sitemap.xml，并同步 dist；保留 dist 原有图标。无构建步骤，计时、账号和存储代码未改动。
+推送后需核对自定义域名已更新；搜索平台归属验证与 sitemap 提交由用户完成。

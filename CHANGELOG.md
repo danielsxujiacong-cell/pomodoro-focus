@@ -14,3 +14,7 @@
 - 新增 Supabase 邮箱注册、密码登录、会话保持和退出登录。
 - 新增未登录/已登录状态展示；未配置 Supabase 时原番茄钟仍可正常使用。
 - 未修改 `tomato-state` localStorage 数据结构，也未上传番茄数据。
+
+## 2026-10-24 · 最小 SEO 优化
+
+- 仅更新公开首页 SEO、canonical、robots.txt 和 sitemap.xml，并同步 dist；保留 dist 原有图标。无构建步骤，计时、账号和存储代码未改动。
